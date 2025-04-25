@@ -143,7 +143,8 @@ def find_lenders():
         flash("Please submit client information first")
         return redirect(url_for('client_form'))
     
-   from datetime import datetime  # Make sure this is at the top of your file
+from datetime import datetime
+
 
 ...
 
