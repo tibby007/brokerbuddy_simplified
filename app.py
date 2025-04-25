@@ -143,14 +143,6 @@ def find_lenders():
 from datetime import datetime
 
 
-...
-
-@app.route('/find-lenders')
-def find_lenders():
-    # your logic
-    return render_template('results.html', client_data=client_data, matches=matches, now=datetime.now())
-
-
 @app.route('/lender-details/<int:lender_id>')
 def lender_details(lender_id):
     """Display detailed information about a specific lender."""
