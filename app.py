@@ -165,18 +165,23 @@ def lender_details(lender_id):
     cursor.execute('SELECT * FROM lender_guidelines WHERE lender_id = ?', (lender_id,))
     guidelines = cursor.fetchone()
     
-    return render_template('lender_details.html', lender=lender, guidelines=guidelines)
+    from datetime import datetime  # Ensure this is at the top
+
+return render_template('lender_details.html', lender=lender, guidelines=guidelines, now=datetime.now())
+
 
 # Error handlers
 @app.errorhandler(404)
 def page_not_found(e):
     """Handle 404 errors."""
-    return render_template('404.html'), 404
+   return render_template('404.html', now=datetime.now()), 404
+
 
 @app.errorhandler(500)
 def server_error(e):
     """Handle 500 errors."""
-    return render_template('500.html'), 500
+    return render_template('500.html', now=datetime.now()), 500
+
 
 # Initialize the application
 if __name__ == '__main__':
