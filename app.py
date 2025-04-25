@@ -140,7 +140,12 @@ def find_lenders():
         flash("Please submit client information first")
         return redirect(url_for('client_form'))
     
-    return render_template('results.html', client_data=client_data, matches=matches)
+   from datetime import datetime  # Make sure this is at the top of your file
+
+...
+
+return render_template('results.html', client_data=client_data, matches=matches, now=datetime.now())
+
 
 @app.route('/lender-details/<int:lender_id>')
 def lender_details(lender_id):
