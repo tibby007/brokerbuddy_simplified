@@ -57,10 +57,13 @@ def init_db():
 def index():
     return render_template('index.html', now=datetime.now())
 
+from datetime import datetime
+
 @app.route('/client-form')
 def client_form():
     """Render the client information form."""
-    return render_template('client_form.html')
+    return render_template('client_form.html', now=datetime.now())
+
 
 @app.route('/submit-client', methods=['POST'])
 def submit_client():
