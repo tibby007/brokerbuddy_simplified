@@ -171,7 +171,19 @@ def lender_details(lender_id):
     
     from datetime import datetime  # Ensure this is at the top
 
-return render_template('lender_details.html', lender=lender, guidelines=guidelines, now=datetime.now())
+@app.route('/lender-details/<int:lender_id>')
+def lender_details(lender_id):
+    """Display detailed information about a specific lender."""
+    db = get_db()
+    cursor = db.conn.cursor()
+
+    cursor.execute('SELECT * FROM lenders WHERE lender_id = ?', (lender_id,))
+    lender = cursor.fetchone()
+
+    cursor.execute('SELECT * FROM lender_guidelines WHERE lender_id = ?', (lender_id,))
+    guidelines = cursor.fetchone()
+
+    return render_template('lender_details.html', lender=lender, guidelines=guidelines, now=datetime.now())
 
 
 # Error handlers
