@@ -52,13 +52,10 @@ def init_db():
         print(f"Database initialized at {app.config['DATABASE_PATH']}")
 
 # Routes
+
 @app.route('/')
 def index():
-    """Render the homepage."""
-    from datetime import datetime  # (if not already at the top)
-
-return render_template('index.html', now=datetime.now())
-
+    return render_template('index.html', now=datetime.now())
 
 @app.route('/client-form')
 def client_form():
