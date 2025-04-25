@@ -156,26 +156,6 @@ def lender_details(lender_id):
     """Display detailed information about a specific lender."""
     db = get_db()
     cursor = db.conn.cursor()
-    
-    # Get lender information
-    cursor.execute('SELECT * FROM lenders WHERE id = ?', (lender_id,))
-    lender = cursor.fetchone()
-    
-    if not lender:
-        flash("Lender not found")
-        return redirect(url_for('find_lenders'))
-    
-    # Get lender guidelines
-    cursor.execute('SELECT * FROM lender_guidelines WHERE lender_id = ?', (lender_id,))
-    guidelines = cursor.fetchone()
-    
-    from datetime import datetime  # Ensure this is at the top
-
-@app.route('/lender-details/<int:lender_id>')
-def lender_details(lender_id):
-    """Display detailed information about a specific lender."""
-    db = get_db()
-    cursor = db.conn.cursor()
 
     cursor.execute('SELECT * FROM lenders WHERE lender_id = ?', (lender_id,))
     lender = cursor.fetchone()
