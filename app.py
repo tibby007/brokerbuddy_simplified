@@ -176,9 +176,8 @@ return render_template('lender_details.html', lender=lender, guidelines=guidelin
 
 # Error handlers
 @app.errorhandler(404)
-def page_not_found(e):
-    """Handle 404 errors."""
-   return render_template('404.html', now=datetime.now()), 404
+def page_not_found(error):
+    return render_template('404.html', now=datetime.now()), 404
 
 
 @app.errorhandler(500)
