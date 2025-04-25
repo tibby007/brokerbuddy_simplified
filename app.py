@@ -55,7 +55,10 @@ def init_db():
 @app.route('/')
 def index():
     """Render the homepage."""
-    return render_template('index.html')
+    from datetime import datetime  # (if not already at the top)
+
+return render_template('index.html', now=datetime.now())
+
 
 @app.route('/client-form')
 def client_form():
