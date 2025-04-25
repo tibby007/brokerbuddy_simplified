@@ -145,7 +145,10 @@ from datetime import datetime
 
 ...
 
-return render_template('results.html', client_data=client_data, matches=matches, now=datetime.now())
+@app.route('/find-lenders')
+def find_lenders():
+    # your logic
+    return render_template('results.html', client_data=client_data, matches=matches, now=datetime.now())
 
 
 @app.route('/lender-details/<int:lender_id>')
