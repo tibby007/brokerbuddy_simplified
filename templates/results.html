@@ -60,19 +60,19 @@
                             {% endif %}
                             
                             {% if client_data.equipment_type %}
-                            <div class="summary-item">
-                                <span class="summary-label">Equipment Type:</span>
-                                <span class="summary-value">${{ "{:,.2f}".format(client_data.equipment_cost|float) }}</span>
+<div class="summary-item">
+    <span class="summary-label">Equipment Type:</span>
+    <span class="summary-value">{{ client_data.equipment_type }}</span>
+</div>
+{% endif %}
 
-                            </div>
-                            {% endif %}
-                            
-                            {% if client_data.equipment_cost %}
-                            <div class="summary-item">
-                                <span class="summary-label">Equipment Cost:</span>
-                                <span class="summary-value">${{ client_data.equipment_cost|float|format(',') }}</span>
-                            </div>
-                            {% endif %}
+{% if client_data.equipment_cost %}
+<div class="summary-item">
+    <span class="summary-label">Equipment Cost:</span>
+    <span class="summary-value">${{ "{:,.2f}".format(client_data.equipment_cost|float) }}</span>
+</div>
+{% endif %}
+
                             
                             {% if client_data.industry %}
                             <div class="summary-item">
