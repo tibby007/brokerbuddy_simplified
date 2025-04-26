@@ -11,12 +11,12 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo">
-                <a href="{{ url_for('index')  }}">BrokerBuddy</a>
+                <a href="{{ url_for('index') }}">BrokerBuddy</a>
             </div>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('client_form') }}">Find Lenders</a></li>
+                    <li><a href="{{ url_for('client_form') }}" class="active">Find Lenders</a></li>
                     <li><a href="{{ url_for('index') }}#about">About Us</a></li>
                 </ul>
             </nav>
@@ -24,99 +24,122 @@
     </header>
 
     <main class="main-content">
-        <section class="form-section">
+        <section class="page-header">
             <div class="container">
-                <div class="form-container">
-                    <h2 class="form-title">Enter Client Information</h2>
-                    
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            <div class="alert alert-warning">
-                                <ul>
-                                    {% for message in messages %}
-                                        <li>{{ message }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endif %}
-                    {% endwith %}
-                    
+                <h1>Find the Right Equipment Finance and Working Capital Lenders</h1>
+                <p>Enter your client's information below to match with suitable lenders.</p>
+            </div>
+        </section>
+
+        <section class="client-form-section">
+            <div class="container">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="alert alert-warning">
+                            <ul>
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <div class="form-card">
                     <form action="{{ url_for('submit_client') }}" method="post">
-                        <div class="form-row">
+                        <div class="form-section">
+                            <h2>Client Information</h2>
+
                             <div class="form-group">
-                                <label for="business_name">Business Name</label>
+                                <label for="business_name">Client/Business Name <span class="required">*</span></label>
                                 <input type="text" id="business_name" name="business_name" class="form-control" required>
                             </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2>Financial Details</h2>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="credit_score">Credit Score <span class="required">*</span></label>
+                                    <select id="credit_score" name="credit_score" class="form-control" required>
+                                        <option value="">Select Credit Score</option>
+                                        <option value="550-599">550-599</option>
+                                        <option value="600-649">600-649</option>
+                                        <option value="650-699">650-699</option>
+                                        <option value="700-749">700-749</option>
+                                        <option value="750+">750+</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="time_in_business">Time in Business <span class="required">*</span></label>
+                                    <select id="time_in_business" name="time_in_business" class="form-control" required>
+                                        <option value="">Select Time in Business</option>
+                                        <option value="Startup">Startup (Less than 1 year)</option>
+                                        <option value="1 year">1 year</option>
+                                        <option value="2 years">2 years</option>
+                                        <option value="3 years">3 years</option>
+                                        <option value="4 years">4 years</option>
+                                        <option value="5+ years">5+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="monthly_revenue">Monthly Revenue</label>
+                                <input type="text" id="monthly_revenue" name="monthly_revenue" class="form-control" placeholder="e.g. 25000">
+                                <small class="form-text">Enter numeric value only, without currency symbols or commas</small>
+                            </div>
+
                             <div class="form-group">
                                 <label for="industry">Industry</label>
                                 <select id="industry" name="industry" class="form-control">
                                     <option value="">Select Industry</option>
-                                    <option value="Agriculture">Agriculture</option>
                                     <option value="Construction">Construction</option>
-                                    <option value="Healthcare">Healthcare</option>
-                                    <option value="Manufacturing">Manufacturing</option>
-                                    <option value="Retail">Retail</option>
-                                    <option value="Services">Services</option>
-                                    <option value="Technology">Technology</option>
                                     <option value="Transportation">Transportation</option>
-                                    <option value="Wholesale">Wholesale</option>
+                                    <option value="Manufacturing">Manufacturing</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Agriculture">Agriculture</option>
+                                    <option value="Retail">Retail</option>
+                                    <option value="Food Service">Food Service</option>
+                                    <option value="Technology">Technology</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>
-                        
-                        <div class="form-row">
+
+                        <div class="form-section">
+                            <h2>Equipment Details</h2>
+
                             <div class="form-group">
-                                <label for="time_in_business">Time in Business (months)</label>
-                                <input type="number" id="time_in_business" name="time_in_business" class="form-control" required>
+                                <label for="equipment_type">Equipment Type <span class="required">*</span></label>
+                                <input type="text" id="equipment_type" name="equipment_type" class="form-control" placeholder="e.g. Excavator, Truck, Medical Equipment" required>
                             </div>
+
                             <div class="form-group">
-                                <label for="monthly_revenue">Monthly Revenue ($)</label>
-                                <input type="number" id="monthly_revenue" name="monthly_revenue" class="form-control">
+                                <label for="equipment_cost">Equipment Cost <span class="required">*</span></label>
+                                <input type="text" id="equipment_cost" name="equipment_cost" class="form-control" placeholder="e.g. 75000" required>
+                                <small class="form-text">Enter numeric value only, without currency symbols or commas</small>
                             </div>
-                        </div>
-                        
-                        <div class="form-row">
+
                             <div class="form-group">
-                                <label for="credit_score">Credit Score</label>
-                                <select id="credit_score" name="credit_score" class="form-control" required>
-                                    <option value="">Select Credit Score</option>
-                                    <option value="Below 600">Below 600</option>
-                                    <option value="600-649">600-649</option>
-                                    <option value="650-699">650-699</option>
-                                    <option value="700-749">700-749</option>
-                                    <option value="750+">750+</option>
+                                <label for="needs_working_capital">Is your client interested in working capital as well?</label>
+                                <select id="needs_working_capital" name="needs_working_capital" class="form-control">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
-                                <label for="equipment_type">Equipment Type</label>
-                                <select id="equipment_type" name="equipment_type" class="form-control" required>
-                                    <option value="">Select Equipment Type</option>
-                                    <option value="Agricultural">Agricultural Equipment</option>
-                                    <option value="Construction">Construction Equipment</option>
-                                    <option value="Manufacturing">Manufacturing Equipment</option>
-                                    <option value="Medical">Medical Equipment</option>
-                                    <option value="Office">Office Equipment</option>
-                                    <option value="Restaurant">Restaurant Equipment</option>
-                                    <option value="Technology">Technology Equipment</option>
-                                    <option value="Transportation">Transportation Equipment</option>
-                                    <option value="Other">Other Equipment</option>
-                                </select>
+                                <label for="notes">Additional Notes</label>
+                                <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="Any additional information about the client or equipment..."></textarea>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="equipment_cost">Equipment Cost ($)</label>
-                            <input type="number" id="equipment_cost" name="equipment_cost" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="notes">Additional Notes</label>
-                            <textarea id="notes" name="notes" class="form-control" rows="4"></textarea>
-                        </div>
-                        
+
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-submit">Find Matching Lenders</button>
+                            <button type="submit" class="btn btn-primary">Find Matching Lenders</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
                         </div>
                     </form>
                 </div>
@@ -143,7 +166,7 @@
                     <h4>Contact</h4>
                     <p>AI Marvels Inc</p>
                     <p>Douglasville, GA</p>
-                    <p><a href="mailto:cheryl@aimarvelsinc.com">cheryl@aimarvelsinc.com</a></p>
+                    <p><a href="mailto:support@aimarvelsinc.com">support@aimarvelsinc.com</a></p>
                     <p><a href="https://aimarvelsinc.com" target="_blank">aimarvelsinc.com</a></p>
                 </div>
             </div>
@@ -153,7 +176,6 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/main.js')  }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
-
