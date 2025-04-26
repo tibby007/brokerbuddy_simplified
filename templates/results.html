@@ -37,12 +37,13 @@
                     <h2>Client Information</h2>
                     <div class="summary-card">
                         <div class="summary-details">
-                            {% if client_data.name %}
-                            <div class="summary-item">
-                                <span class="summary-label">Client Name:</span>
-                                <span class="summary-value">{{ client_data.name }}</span>
-                            </div>
-                            {% endif %}
+                            {% if client_data.business_name %}
+<div class="summary-item">
+    <span class="summary-label">Business Name:</span>
+    <span class="summary-value">{{ client_data.business_name }}</span>
+</div>
+{% endif %}
+
                             
                             {% if client_data.credit_score %}
                             <div class="summary-item">
