@@ -152,6 +152,7 @@ def submit_client():
 
 @app.route('/find-lenders')
 def find_lenders():
+    """Display matching lenders for the client."""
     client_id = session.get('client_id')
     client_data = session.get('client_data')
     matches = session.get('matches')
