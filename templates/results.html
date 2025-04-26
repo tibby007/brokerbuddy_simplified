@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lender Matches - BrokerBuddy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="{{ url_for('index')  }}">BrokerBuddy</a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('client_form') }}">Find Lenders</a></li>
+                    <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="results-section">
+            <div class="container">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2>Matching Lenders for Your Client</h2>
+                        <p>Based on the information provided, we've found the following lenders that match your client's profile.</p>
+                    </div>
+                    
+                    <div class="client-summary">
+                        <h3>Client Information</h3>
+                        <div class="client-summary-grid">
+                            <div class="client-summary-item">
+                                <strong>Business Name</strong>
+                                <span>{{ client_data.business_name }}</span>
+                            </div>
+                            <div class="client-summary-item">
+                                <strong>Industry</strong>
+                                <span>{{ client_data.industry if client_data.industry else 'Not specified' }}</span>
+                            </div>
+                            <div class="client-summary-item">
+                                <strong>Time in Business</strong>
+                                <span>{{ client_data.time_in_business }} months</span>
+                            </div>
+                            <div class="client-summary-item">
+                                <strong>Monthly Revenue</strong>
+                                <span>${{ client_data.monthly_revenue if client_data.monthly_revenue else 'Not specified' }}</span>
+                            </div>
+                            <div class="client-summary-item">
+                                <strong>Credit Score</strong>
+                                <span>{{ client_data.credit_score }}</span>
+                            </div>
+                            <div class="client-summary-item">
+                                <strong>Equipment Type</strong>
+                                <span>{{ client_data.equipment_type }}</span>
+                            </div>
+                            <div class="client-summary-item">
+                                <strong>Equipment Cost</strong>
+                                <span>${{ client_data.equipment_cost }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lender-matches">
+                        <h3>Matching Lenders</h3>
+                        
+                        {% if matches %}
+                            {% for match in matches %}
+                                <div class="lender-card">
+                                    <div class="lender-header">
+                                        <div class="lender-name">
+                                            <h4>{{ match.lender_name }}</h4>
+                                            <p>{{ match.program_type }}</p>
+                                        </div>
+                                        <div class="lender-score">
+                                            {{ match.match_score }}% Match
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="lender-details">
+                                        <div class="lender-details-grid">
+                                            <div class="lender-detail-item">
+                                                <strong>Min Equipment Cost</strong>
+                                                <span>${{ match.min_amount }}</span>
+                                            </div>
+                                            <div class="lender-detail-item">
+                                                <strong>Max Equipment Cost</strong>
+                                                <span>${{ match.max_amount }}</span>
+                                            </div>
+                                            <div class="lender-detail-item">
+                                                <strong>Min Credit Score</strong>
+                                                <span>{{ match.min_credit_score }}</span>
+                                            </div>
+                                            <div class="lender-detail-item">
+                                                <strong>Min Time in Business</strong>
+                                                <span>{{ match.min_time_in_business }} months</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="match-reasons">
+                                        <h5>Why This Lender Matches</h5>
+                                        <ul>
+                                            {% for reason in match.match_reasons %}
+                                                <li>{{ reason }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="lender-actions">
+                                        <a href="{{ url_for('lender_details', lender_id=match.lender_id) }}" class="btn btn-details">View Details</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="no-matches">
+                                <h3>No Matching Lenders Found</h3>
+                                <p>Based on the information provided, we couldn't find any lenders that match your client's profile. Try adjusting some of the criteria and search again.</p>
+                                <a href="{{ url_for('client_form') }}" class="btn btn-primary">Try Again</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>BrokerBuddy</h3>
+                    <p>An AI Marvels Inc Product</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('client_form') }}">Find Lenders</a></li>
+                        <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>AI Marvels Inc</p>
+                    <p>Douglasville, GA</p>
+                    <p><a href="mailto:cheryl@aimarvelsinc.com">cheryl@aimarvelsinc.com</a></p>
+                    <p><a href="https://aimarvelsinc.com" target="_blank">aimarvelsinc.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ now.year }} AI Marvels Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js')  }}"></script>
+</body>
+</html>
 
