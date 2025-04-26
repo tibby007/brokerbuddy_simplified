@@ -62,7 +62,8 @@
                             {% if client_data.equipment_type %}
                             <div class="summary-item">
                                 <span class="summary-label">Equipment Type:</span>
-                                <span class="summary-value">{{ client_data.equipment_type }}</span>
+                                <span class="summary-value">${{ "{:,.2f}".format(client_data.equipment_cost|float) }}</span>
+
                             </div>
                             {% endif %}
                             
