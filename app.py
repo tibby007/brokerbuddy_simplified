@@ -75,7 +75,7 @@ def submit_client():
             'credit_score': request.form.get('credit_score', '')
         }
 
-        required_fields = ['business_name', 'industry', 'time_in_business', 'monthly_revenue', 'credit_score']
+           required_fields = ['business_name', 'industry', 'time_in_business', 'monthly_revenue', 'credit_score']
 
         }
         
