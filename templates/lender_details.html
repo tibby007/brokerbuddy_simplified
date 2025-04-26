@@ -11,7 +11,7 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo">
-                <a href="{{ url_for('index')  }}">BrokerBuddy</a>
+                <a href="{{ url_for('index') }}">BrokerBuddy</a>
             </div>
             <nav class="nav-menu">
                 <ul>
@@ -24,73 +24,58 @@
     </header>
 
     <main class="main-content">
-        <section class="results-section">
+        <section class="page-header">
             <div class="container">
-                <div class="results-container">
-                    {% if lender %}
-                        <div class="results-header">
-                            <h2>{{ lender.lender_name }}</h2>
-                            <p>{{ lender.program_type }}</p>
+                <h1>Lender Details</h1>
+                <p>Review lender program information and guidelines.</p>
+            </div>
+        </section>
+
+        <section class="lender-details-section">
+            <div class="container">
+                {% if lender %}
+                    <div class="lender-card">
+                        <h2>{{ lender.name }}</h2>
+                        {% if lender.description %}
+                        <p class="lender-description">{{ lender.description }}</p>
+                        {% endif %}
+
+                        {% if guidelines %}
+                        <div class="guidelines">
+                            <h3>Program Guidelines</h3>
+                            <ul class="guideline-list">
+                                {% if guidelines.min_credit_score %}
+                                <li><strong>Minimum Credit Score:</strong> {{ guidelines.min_credit_score }}</li>
+                                {% endif %}
+                                
+                                {% if guidelines.min_time_in_business %}
+                                <li><strong>Minimum Time in Business:</strong> {{ guidelines.min_time_in_business }} months</li>
+                                {% endif %}
+                                
+                                {% if guidelines.min_equipment_cost and guidelines.max_equipment_cost %}
+                                <li><strong>Loan Amount Range:</strong> ${{ "{:,.0f}".format(guidelines.min_equipment_cost|float) }} - ${{ "{:,.0f}".format(guidelines.max_equipment_cost|float) }}</li>
+                                {% endif %}
+                                
+                                {% if guidelines.equipment_types %}
+                                <li><strong>Equipment Types Accepted:</strong> {{ guidelines.equipment_types }}</li>
+                                {% endif %}
+                                
+                                {% if guidelines.industries_accepted %}
+                                <li><strong>Industries Served:</strong> {{ guidelines.industries_accepted }}</li>
+                                {% endif %}
+                            </ul>
                         </div>
-                        
-                        <div class="lender-details-full">
-                            <h3>Lender Guidelines</h3>
-                            
-                            <div class="lender-details-grid">
-                                <div class="lender-detail-item">
-                                    <strong>Min Equipment Cost</strong>
-                                    <span>${{ guidelines.min_equipment_cost if guidelines.min_equipment_cost else 'Not specified' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Max Equipment Cost</strong>
-                                    <span>${{ guidelines.max_equipment_cost if guidelines.max_equipment_cost else 'Not specified' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Min Credit Score</strong>
-                                    <span>{{ guidelines.min_credit_score if guidelines.min_credit_score else 'Not specified' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Min Time in Business</strong>
-                                    <span>{{ guidelines.min_time_in_business if guidelines.min_time_in_business else 'Not specified' }} months</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Min Monthly Revenue</strong>
-                                    <span>${{ guidelines.min_monthly_revenue if guidelines.min_monthly_revenue else 'Not specified' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Industries Accepted</strong>
-                                    <span>{{ guidelines.industries_accepted if guidelines.industries_accepted else 'All Industries' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Industries Restricted</strong>
-                                    <span>{{ guidelines.industries_restricted if guidelines.industries_restricted else 'None' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Equipment Types Accepted</strong>
-                                    <span>{{ guidelines.equipment_types_accepted if guidelines.equipment_types_accepted else 'All Types' }}</span>
-                                </div>
-                                <div class="lender-detail-item">
-                                    <strong>Equipment Types Restricted</strong>
-                                    <span>{{ guidelines.equipment_types_restricted if guidelines.equipment_types_restricted else 'None' }}</span>
-                                </div>
-                            </div>
-                            
-                            <div class="lender-additional-info">
-                                <h3>Additional Information</h3>
-                                <p>{{ guidelines.additional_info if guidelines.additional_info else 'No additional information available.' }}</p>
-                            </div>
-                            
-                            <div class="lender-actions">
-                                <a href="{{ url_for('find_lenders') }}" class="btn btn-primary">Back to Results</a>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="no-matches">
-                            <h3>Lender Not Found</h3>
-                            <p>The lender you're looking for could not be found. Please return to the results page and try again.</p>
-                            <a href="{{ url_for('find_lenders') }}" class="btn btn-primary">Back to Results</a>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="no-lender">
+                        <h2>Lender Not Found</h2>
+                        <p>We couldn't retrieve details for this lender. Please try again.</p>
+                    </div>
+                {% endif %}
+                
+                <div class="results-actions">
+                    <a href="{{ url_for('find_lenders') }}" class="btn btn-secondary">Back to Matches</a>
                 </div>
             </div>
         </section>
@@ -115,7 +100,7 @@
                     <h4>Contact</h4>
                     <p>AI Marvels Inc</p>
                     <p>Douglasville, GA</p>
-                    <p><a href="mailto:cheryl@aimarvelsinc.com">cheryl@aimarvelsinc.com</a></p>
+                    <p><a href="mailto:support@aimarvelsinc.com">support@aimarvelsinc.com</a></p>
                     <p><a href="https://aimarvelsinc.com" target="_blank">aimarvelsinc.com</a></p>
                 </div>
             </div>
@@ -125,7 +110,6 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/main.js')  }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
-
