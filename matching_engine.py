@@ -189,7 +189,7 @@ if 'interested_in_wc' in client_data and client_data['interested_in_wc'] == 'Yes
         'reason': "Client is interested in working capital funding"
     })
 
-        final_score = (total_score / max_possible_score * 100) if max_possible_score > 0 else 0
+final_score = (total_score / max_possible_score * 100) if max_possible_score > 0 else 0
         return final_score, match_details
 
     def _parse_credit_score(self, credit_score):
