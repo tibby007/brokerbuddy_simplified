@@ -160,6 +160,7 @@ class MatchingEngine:
                 })
 
         # Industry (10% weight)
+                # Industry (10% weight)
         if 'industry' in client_data and client_data['industry'] and guidelines['industries_accepted']:
             max_possible_score += 10
             industries = str(guidelines['industries_accepted']).lower().split(',')
@@ -178,19 +179,21 @@ class MatchingEngine:
                     'result': 'No Match',
                     'reason': f"Client's industry ({client_industry}) is not specifically listed in lender's served industries"
                 })
-# Working Capital Interest (15% weight)
-if 'interested_in_wc' in client_data and client_data['interested_in_wc'] == 'Yes':
-    max_possible_score += 15
-    # Assume any lender can offer working capital (later we can refine this if needed)
-    total_score += 15
-    match_details.append({
-        'criterion': 'working_capital',
-        'result': 'Match',
-        'reason': "Client is interested in working capital funding"
-    })
 
-final_score = (total_score / max_possible_score * 100) if max_possible_score > 0 else 0
-        return final_score, match_details
+        # Working Capital Interest (15% weight)
+        if 'interested_in_wc' in client_data and client_data['interested_in_wc'] == 'Yes':
+            max_possible_score += 15
+            total_score += 15
+            match_details.append({
+                'criterion': 'working_capital',
+                'result': 'Match',
+                'reason': "Client is interested in working capital funding"
+            })
+
+    # FINAL SCORE CALCULATION
+    final_score = (total_score / max_possible_score * 100) if max_possible_score > 0 else 0
+    return final_score, match_details
+
 
     def _parse_credit_score(self, credit_score):
         """Parse credit score from various formats."""
