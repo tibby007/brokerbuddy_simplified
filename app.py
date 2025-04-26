@@ -177,11 +177,12 @@ def submit_client():
 
 @app.route('/find-lenders')
 def find_lenders():
+    """Display matching lenders for the client."""
     try:
         client_id = session.get('client_id')
         client_data = session.get('client_data')
         matches = session.get('matches')
-
+        
         app.logger.debug(f"Retrieved from session - client_id: {client_id}, matches: {len(matches) if matches else 0}")
 
         if not client_id or not matches:
@@ -189,11 +190,33 @@ def find_lenders():
             flash("Please submit client information first")
             return redirect(url_for('client_form'))
 
-        return render_template('results.html', client_data=client_data, matches=matches, now=datetime.now())
+        # Separate Equipment vs Working Capital Matches (NEW)
+        equipment_matches = []
+        working_capital_matches = []
+
+        for match in matches:
+            is_working_capital = False
+            for detail in match.get('match_details', []):
+                if detail.get('criterion') == 'working_capital' and detail.get('result') == 'Match':
+                    is_working_capital = True
+                    break
+
+            if is_working_capital:
+                working_capital_matches.append(match)
+            else:
+                equipment_matches.append(match)
+
+        return render_template('results.html', 
+            client_data=client_data, 
+            equipment_matches=equipment_matches,
+            working_capital_matches=working_capital_matches,
+            now=datetime.now()
+        )
     except Exception as e:
         app.logger.error(f"Error in find_lenders: {str(e)}")
         flash("An error occurred while retrieving lender matches. Please try again.")
         return redirect(url_for('client_form'))
+
 
 @app.route('/lender-details/<int:lender_id>')
 def lender_details(lender_id):
