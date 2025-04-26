@@ -67,20 +67,16 @@ def client_form():
 
 @app.route('/submit-client', methods=['POST'])
 def submit_client():
-    """Process client form submission and find matching lenders."""
-    if request.method == 'POST':
-        # Get form data
-        client_data = {
-            'name': request.form.get('name', ''),
-            'credit_score': request.form.get('credit_score', ''),
+            client_data = {
+            'business_name': request.form.get('business_name', ''),
+            'industry': request.form.get('industry', ''),
             'time_in_business': request.form.get('time_in_business', ''),
             'monthly_revenue': request.form.get('monthly_revenue', ''),
-            'equipment_type': request.form.get('equipment_type', ''),
-            'equipment_cost': request.form.get('equipment_cost', ''),
-            'industry': request.form.get('industry', ''),
-            'contact_email': request.form.get('contact_email', ''),
-            'contact_phone': request.form.get('contact_phone', ''),
-            'notes': request.form.get('notes', '')
+            'credit_score': request.form.get('credit_score', '')
+        }
+
+        required_fields = ['business_name', 'industry', 'time_in_business', 'monthly_revenue', 'credit_score']
+
         }
         
         # Validate required fields
