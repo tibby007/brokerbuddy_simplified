@@ -1,881 +1,3 @@
-/* 
-   BrokerBuddy Simplified - Main Stylesheet
-   A professional, modern design for the BrokerBuddy equipment finance matching application
-*/
-
-/* Base Styles and Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-a {
-    color: #0056b3;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #003d7a;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0.5em;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #1a1a1a;
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-h4 {
-    font-size: 1.25rem;
-}
-
-p {
-    margin-bottom: 1rem;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 2rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.section-title:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: #0056b3;
-}
-
-/* Header */
-.header {
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.logo a {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #0056b3;
-    text-decoration: none;
-}
-
-.nav-menu ul {
-    display: flex;
-    list-style: none;
-}
-
-.nav-menu li {
-    margin-left: 1.5rem;
-}
-
-.nav-menu a {
-    color: #333;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.5rem 0;
-    position: relative;
-}
-
-.nav-menu a:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #0056b3;
-    transition: width 0.3s ease;
-}
-
-.nav-menu a:hover:after,
-.nav-menu a.active:after {
-    width: 100%;
-}
-
-.nav-menu a.active {
-    color: #0056b3;
-}
-
-/* Main Content */
-.main-content {
-    padding: 2rem 0;
-    min-height: calc(100vh - 180px);
-}
-
-/* Hero Section */
-.hero {
-    padding: 4rem 0;
-    background-color: #f0f5ff;
-}
-
-.hero .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.hero-content {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 2rem;
-}
-
-.hero-image {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-}
-
-.hero h1 {
-    margin-bottom: 1.5rem;
-    color: #1a1a1a;
-}
-
-.hero p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: #555;
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 500;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background-color: #0056b3;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #003d7a;
-    color: #fff;
-}
-
-.btn-secondary {
-    background-color: #e9ecef;
-    color: #333;
-}
-
-.btn-secondary:hover {
-    background-color: #dde2e6;
-}
-
-/* Features Section */
-.features {
-    padding: 4rem 0;
-    background-color: #fff;
-}
-
-.feature-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 -15px;
-}
-
-.feature-card {
-    flex: 1;
-    min-width: 300px;
-    margin: 15px;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.feature-icon img {
-    width: 60px;
-    height: 60px;
-}
-
-.feature-card h3 {
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-/* Benefits Section */
-.benefits {
-    padding: 4rem 0;
-    background-color: #f0f5ff;
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.benefit-card {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.benefit-card h3 {
-    margin-bottom: 1rem;
-    color: #0056b3;
-}
-
-/* About Section */
-.about {
-    padding: 4rem 0;
-    background-color: #fff;
-}
-
-.about-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.about-image {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 2rem;
-    text-align: center;
-}
-
-.about-text {
-    flex: 2;
-    min-width: 300px;
-}
-
-.about-contact {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e9ecef;
-}
-
-.about-contact p {
-    margin-bottom: 0.5rem;
-}
-
-/* CTA Section */
-.cta {
-    padding: 4rem 0;
-    background-color: #0056b3;
-    color: #fff;
-    text-align: center;
-}
-
-.cta h2 {
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.cta p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-/* Footer */
-.footer {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 3rem 0 1rem;
-}
-
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-}
-
-.footer-logo,
-.footer-links,
-.footer-contact {
-    flex: 1;
-    min-width: 250px;
-    margin-bottom: 2rem;
-}
-
-.footer-logo h3 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-links a,
-.footer-contact a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover,
-.footer-contact a:hover {
-    color: #fff;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid #333;
-}
-
-/* Page Header */
-.page-header {
-    background-color: #f0f5ff;
-    padding: 3rem 0;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* Client Form */
-.client-form-section {
-    padding: 2rem 0;
-}
-
-.form-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
-
-.form-section {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.form-section:last-child {
-    border-bottom: none;
-}
-
-.form-section h2 {
-    margin-bottom: 1.5rem;
-    color: #0056b3;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -10px;
-}
-
-.form-row .form-group {
-    flex: 1;
-    min-width: 250px;
-    padding: 0 10px;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.required {
-    color: #dc3545;
-}
-
-.form-control {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: #0056b3;
-    outline: none;
-}
-
-.form-text {
-    display: block;
-    margin-top: 0.25rem;
-    font-size: 0.875rem;
-    color: #6c757d;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-/* Alert */
-.alert {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-}
-
-.alert-warning {
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-    color: #856404;
-}
-
-.alert ul {
-    margin-left: 1.5rem;
-}
-
-/* Results Page */
-.results-section {
-    padding: 2rem 0;
-}
-
-.client-summary {
-    margin-bottom: 2rem;
-}
-
-.summary-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-}
-
-.summary-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-.summary-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.summary-label {
-    font-weight: 500;
-    color: #6c757d;
-    font-size: 0.875rem;
-}
-
-.summary-value {
-    font-size: 1.1rem;
-}
-
-.matches-container {
-    margin-bottom: 2rem;
-}
-
-.matches-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 20px;
-}
-
-.match-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.match-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.match-header {
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.match-header h3 {
-    margin-bottom: 0;
-}
-
-.match-score {
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-}
-
-.match-score-high {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.match-score-medium {
-    background-color: #fff3cd;
-    color: #856404;
-}
-
-.match-score-low {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.match-body {
-    padding: 1.5rem;
-}
-
-.match-description {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.match-details h4 {
-    margin-bottom: 1rem;
-}
-
-.details-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.detail-item {
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-.detail-match {
-    background-color: #d4edda;
-}
-
-.detail-nomatch {
-    background-color: #f8d7da;
-}
-
-.detail-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.detail-criterion {
-    font-weight: 500;
-}
-
-.detail-result {
-    font-weight: 700;
-}
-
-.detail-match .detail-result {
-    color: #155724;
-}
-
-.detail-nomatch .detail-result {
-    color: #721c24;
-}
-
-.detail-reason {
-    font-size: 0.9rem;
-}
-
-.match-footer {
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    text-align: center;
-}
-
-.no-matches-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 2rem;
-    text-align: center;
-}
-
-.no-matches-card h3 {
-    margin-bottom: 1rem;
-    color: #721c24;
-}
-
-.results-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-/* Lender Details Page */
-.lender-details-section {
-    padding: 2rem 0;
-}
-
-.lender-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.lender-header {
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.lender-status {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.lender-status.active {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.lender-status.inactive {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.lender-body {
-    padding: 1.5rem;
-}
-
-.lender-description,
-.lender-info,
-.lender-guidelines {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.lender-guidelines {
-    border-bottom: none;
-}
-
-.info-grid,
-.guidelines-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-}
-
-.info-item,
-.guideline-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-label,
-.guideline-label {
-    font-weight: 500;
-    color: #6c757d;
-    font-size: 0.875rem;
-}
-
-.info-value,
-.guideline-value {
-    font-size: 1.1rem;
-}
-
-.lender-footer {
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Error Pages */
-.error-page {
-    text-align: center;
-    padding: 4rem 0;
-}
-
-.error-code {
-    font-size: 6rem;
-    font-weight: 700;
-    color: #0056b3;
-    margin-bottom: 1rem;
-}
-
-.error-message {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        padding: 1rem 0;
-    }
-    
-    .logo {
-        margin-bottom: 1rem;
-    }
-    
-    .nav-menu ul {
-        justify-content: center;
-    }
-    
-    .nav-menu li {
-        margin: 0 0.75rem;
-    }
-    
-    .hero .container {
-        flex-direction: column;
-    }
-    
-    .hero-content {
-        padding-right: 0;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-    
-    .about-content {
-        flex-direction: column;
-    }
-    
-    .about-image {
-        padding-right: 0;
-        margin-bottom: 2rem;
-    }
-    
-    .form-actions {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .form-actions .btn {
-        width: 100%;
-    }
-    
-    .lender-footer {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .lender-footer .btn {
-        width: 100%;
-    }
-}
-
-/* Print Styles */
-@media print {
-    .header, .footer, .form-actions, .match-footer {
-        display: none;
-    }
-    
-    .main-content {
-        padding: 0;
-    }
-    
-    .page-header {
-        background-color: transparent;
-        padding: 1rem 0;
-    }
-    
-    .match-card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ddd;
-        margin-bottom: 1rem;
-    }
-    
-    .match-header, .match-footer {
-        background-color: transparent;
-    }
-    
-    .match-score {
-        border: 1px solid #ddd;
-    }
-    
-    .detail-match, .detail-nomatch {
-        background-color: transparent;
-        border: 1px solid #ddd;
-    }
-}
 /* Enhanced BrokerBuddy Stylesheet - Modern & Professional Finance Theme */
 :root {
   --primary: #0056b3;
@@ -1710,6 +832,217 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   .nav-menu.active li:
+   /* Mobile Navigation Styles for BrokerBuddy */
+
+/* Base Styles - Add these to your main CSS */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 0;
+  }
+  
+  .header-container {
+    position: relative;
+  }
+  
+  .logo {
+    z-index: 2;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--primary-dark);
+    z-index: 999;
+    transition: right 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .nav-menu li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-menu a {
+    font-size: 20px;
+    display: block;
+    padding: 10px;
+  }
+  
+  /* Hamburger Menu */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1000;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+  
+  .menu-toggle span:first-child {
+    transform-origin: 0% 0%;
+  }
+  
+  .menu-toggle span:nth-last-child(1) {
+    transform-origin: 0% 100%;
+    margin-bottom: 0;
+  }
+  
+  .menu-toggle.active span {
+    opacity: 1;
+    background: #fff;
+  }
+  
+  .menu-toggle.active span:first-child {
+    transform: rotate(45deg) translate(4px, -2px);
+  }
+  
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  
+  .menu-toggle.active span:nth-last-child(1) {
+    transform: rotate(-45deg) translate(2px, 0px);
+  }
+  
+  /* Overlay for menu */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Animation for menu items */
+  .nav-menu.active li {
+    animation: slideIn 0.5s forwards;
+    opacity: 0;
+  }
+  
+  .nav-menu.active li {
+    animation: slideIn 0.5s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .nav-menu.active li:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  
+  .nav-menu.active li:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  
+  .nav-menu.active li:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  /* Mobile menu JavaScript to add to your main.js file */
+  /*
+  // Mobile menu functionality
+  const menuToggle = document.createElement('button');
+  menuToggle.className = 'menu-toggle';
+  menuToggle.innerHTML = '<span></span><span></span><span></span>';
+  
+  const nav = document.querySelector('.nav-menu');
+  const headerContainer = document.querySelector('.header-container');
+  
+  // Only add toggle if we're on mobile
+  if (window.innerWidth <= 768) {
+    headerContainer.appendChild(menuToggle);
+    
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    document.body.appendChild(overlay);
+    
+    // Toggle menu
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+    
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      nav.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    });
+    
+    // Close menu when clicking a link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+  */
+}
    /* Animation Effects for BrokerBuddy - Add Visual Pizzazz */
 
 /* Subtle background pattern */
