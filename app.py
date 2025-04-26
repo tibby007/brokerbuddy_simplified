@@ -67,24 +67,24 @@ def client_form():
 
 @app.route('/submit-client', methods=['POST'])
 def submit_client():
-            client_data = {
+    if request.method == 'POST':
+        client_data = {
             'business_name': request.form.get('business_name', ''),
             'industry': request.form.get('industry', ''),
             'time_in_business': request.form.get('time_in_business', ''),
             'monthly_revenue': request.form.get('monthly_revenue', ''),
-            'credit_score': request.form.get('credit_score', '')
+            'credit_score': request.form.get('credit_score', ''),
+            'equipment_type': request.form.get('equipment_type', ''),
+            'equipment_cost': request.form.get('equipment_cost', ''),
+            'notes': request.form.get('notes', '')
         }
 
-           required_fields = ['business_name', 'industry', 'time_in_business', 'monthly_revenue', 'credit_score']
-
-        }
-        
-        # Validate required fields
-        required_fields = ['name', 'credit_score', 'time_in_business', 'equipment_type', 'equipment_cost']
+        required_fields = ['business_name', 'industry', 'time_in_business', 'monthly_revenue', 'credit_score']
         for field in required_fields:
             if not client_data[field]:
-                flash(f"Please provide {field.replace('_', ' ')}")
+                flash(f"Please provide {field.replace('_', ' ').title()}")
                 return redirect(url_for('client_form'))
+
         
         # Save client to database
         db = get_db()
