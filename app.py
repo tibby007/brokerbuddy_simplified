@@ -68,11 +68,52 @@ def submit_client():
             'notes': request.form.get('notes', '')
         }
 
-        required_fields = ['business_name', 'industry', 'time_in_business', 'monthly_revenue', 'credit_score', 'equipment_type', 'equipment_cost']
+        # Only these fields are required
+        required_fields = ['business_name', 'industry', 'time_in_business', 'credit_score', 'equipment_type', 'equipment_cost']
         for field in required_fields:
             if not client_data[field]:
                 flash(f"Please provide {field.replace('_', ' ').title()}")
                 return redirect(url_for('client_form'))
+
+        # Save client to database
+        db = get_db()
+        cursor = db.conn.cursor()
+
+        cursor.execute('''
+        INSERT INTO clients (
+            name, credit_score, time_in_business, monthly_revenue,
+            equipment_type, equipment_cost, industry, notes, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            client_data['business_name'],
+            client_data['credit_score'],
+            client_data['time_in_business'],
+            client_data['monthly_revenue'],
+            client_data['equipment_type'],
+            client_data['equipment_cost'],
+            client_data['industry'],
+            client_data['notes'],
+            datetime.now().isoformat(),
+            datetime.now().isoformat()
+        ))
+
+        client_id = cursor.lastrowid
+        db.conn.commit()
+
+        # Find matching lenders
+        matching_engine = get_matching_engine()
+        matches = matching_engine.find_matching_lenders(client_data)
+
+        # Save match results
+        matching_engine.save_match_results(client_id, matches)
+
+        # Store client_id and matches in session for results page
+        session['client_id'] = client_id
+        session['client_data'] = client_data
+        session['matches'] = matches
+
+        return redirect(url_for('find_lenders'))
+
 
         db = get_db()
         cursor = db.conn.cursor()
