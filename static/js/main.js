@@ -1,130 +1,199 @@
-// BrokerBuddy Simplified - Main JavaScript
-// Provides interactive functionality for the BrokerBuddy application
+// BrokerBuddy Main JavaScript File
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize date in footer
-    updateFooterYear();
+    // Mobile Menu Functionality
+    setupMobileMenu();
     
-    // Initialize form validation
-    initFormValidation();
+    // Animation Effects
+    setupAnimations();
     
-    // Initialize responsive navigation
-    initResponsiveNav();
-    
-    // Initialize print functionality
-    initPrintButton();
+    // Form Validation (if on client form page)
+    if (document.querySelector('form')) {
+        setupFormValidation();
+    }
 });
 
-// Update footer year to current year
-function updateFooterYear() {
-    const yearElements = document.querySelectorAll('.footer-bottom');
-    const currentYear = new Date().getFullYear();
+// Mobile Menu Setup
+function setupMobileMenu() {
+    const headerContainer = document.querySelector('.header-container');
+    const nav = document.querySelector('.nav-menu');
     
-    yearElements.forEach(element => {
-        const content = element.innerHTML;
-        element.innerHTML = content.replace('{{ now.year }}', currentYear);
+    // Only setup mobile menu if we're on a mobile device
+    if (window.innerWidth <= 768 && headerContainer && nav) {
+        // Create menu toggle button
+        const menuToggle = document.createElement('button');
+        menuToggle.className = 'menu-toggle';
+        menuToggle.innerHTML = '<span></span><span></span><span></span>';
+        headerContainer.appendChild(menuToggle);
+        
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'menu-overlay';
+        document.body.appendChild(overlay);
+        
+        // Toggle menu
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+        
+        // Close menu when clicking overlay
+        overlay.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+        
+        // Close menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
+}
+
+// Animation Setup
+function setupAnimations() {
+    // Add float animation to hero image
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+        heroImage.classList.add('float');
+    }
+    
+    // Add gradient text effect to selected headings
+    const heroHeading = document.querySelector('.hero-content h1');
+    if (heroHeading) {
+        const text = heroHeading.innerHTML;
+        const enhancedText = text.replace('AI-Powered', '<span class="gradient-text">AI-Powered</span>');
+        heroHeading.innerHTML = enhancedText;
+    }
+    
+    // Add 3D card effect to feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+        card.classList.add('card-3d');
+    });
+    
+    // Add pulse animation to CTA button
+    const ctaButton = document.querySelector('.cta .btn');
+    if (ctaButton) {
+        ctaButton.classList.add('pulse');
+    }
+    
+    // Add data-number attributes to feature headings
+    const featureHeadings = document.querySelectorAll('.feature-card h3');
+    featureHeadings.forEach(heading => {
+        // Extract number from heading text if it starts with a number
+        const match = heading.textContent.match(/^(\d+)\./);
+        if (match && match[1]) {
+            heading.setAttribute('data-number', match[1]);
+        }
+    });
+    
+    // Add background shapes to sections
+    addBackgroundShapes();
+    
+    // Setup intersection observer for scroll animations
+    setupScrollAnimations();
+}
+
+// Add background shapes to sections
+function addBackgroundShapes() {
+    const sections = ['.benefits', '.about', '.working-capital'];
+    
+    sections.forEach((sectionClass, index) => {
+        const section = document.querySelector(sectionClass);
+        if (section) {
+            const shape1 = document.createElement('div');
+            shape1.className = 'bg-shape bg-shape-1';
+            
+            const shape2 = document.createElement('div');
+            shape2.className = 'bg-shape bg-shape-2';
+            
+            section.appendChild(shape1);
+            section.appendChild(shape2);
+        }
     });
 }
 
-// Form validation for client information form
-function initFormValidation() {
-    const clientForm = document.querySelector('form[action*="submit-client"]');
-    
-    if (clientForm) {
-        clientForm.addEventListener('submit', function(event) {
-            const requiredFields = clientForm.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.classList.add('is-invalid');
-                } else {
-                    field.classList.remove('is-invalid');
+// Setup scroll animations using Intersection Observer
+function setupScrollAnimations() {
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
                 }
             });
+        }, { threshold: 0.1 });
+        
+        // Observe feature cards and benefit cards
+        document.querySelectorAll('.feature-card, .benefit-card').forEach(card => {
+            observer.observe(card);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        document.querySelectorAll('.feature-card, .benefit-card').forEach(card => {
+            card.classList.add('show');
+        });
+    }
+}
+
+// Form Validation
+function setupFormValidation() {
+    const form = document.querySelector('form');
+    
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
             
-            // Validate numeric fields
-            const numericFields = ['monthly_revenue', 'equipment_cost'];
+            // Get all required inputs
+            const requiredInputs = form.querySelectorAll('[required]');
             
-            numericFields.forEach(fieldName => {
-                const field = clientForm.querySelector(`[name="${fieldName}"]`);
-                
-                if (field && field.value.trim()) {
-                    const value = field.value.trim();
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
                     
-                    if (isNaN(parseFloat(value)) || !isFinite(value) || parseFloat(value) <= 0) {
-                        isValid = false;
-                        field.classList.add('is-invalid');
-                    } else {
-                        field.classList.remove('is-invalid');
+                    // Create error message if it doesn't exist
+                    let errorMsg = input.parentNode.querySelector('.error-message');
+                    if (!errorMsg) {
+                        errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        errorMsg.textContent = 'This field is required';
+                        input.parentNode.appendChild(errorMsg);
+                    }
+                } else {
+                    input.classList.remove('error');
+                    const errorMsg = input.parentNode.querySelector('.error-message');
+                    if (errorMsg) {
+                        errorMsg.remove();
                     }
                 }
             });
             
             if (!isValid) {
                 event.preventDefault();
-                alert('Please fill in all required fields correctly.');
             }
         });
-    }
-}
-
-// Responsive navigation for mobile devices
-function initResponsiveNav() {
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (window.innerWidth <= 768 && navMenu) {
-        const menuToggle = document.createElement('button');
-        menuToggle.className = 'menu-toggle';
-        menuToggle.innerHTML = '☰';
         
-        const headerContainer = document.querySelector('.header-container');
-        headerContainer.insertBefore(menuToggle, navMenu);
-        
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
-}
-
-// Initialize print functionality for results page
-function initPrintButton() {
-    const printButton = document.getElementById('print-results');
-    
-    if (printButton) {
-        printButton.addEventListener('click', function() {
-            window.print();
-        });
-    }
-}
-
-// Format currency values
-function formatCurrency(value) {
-    if (!value) return '$0.00';
-    
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    }).format(value);
-}
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 100,
-                behavior: 'smooth'
+        // Remove error styling when user starts typing
+        form.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorMsg = this.parentNode.querySelector('.error-message');
+                if (errorMsg) {
+                    errorMsg.remove();
+                }
             });
-        }
-    });
-});
+        });
+    }
+}
