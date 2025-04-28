@@ -1,1 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="signup">
+  <div class="container signup-container">
+    <h1>Become a BrokerBuddy Broker Partner</h1>
+
+    <form method="post" action="{{ url_for('process_broker_signup') }}">
+      <input type="text" name="first_name" placeholder="First Name*" required>
+      <input type="text" name="last_name" placeholder="Last Name*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+
+      <select name="experience" required>
+        <option value="">Select Experience Level*</option>
+        <option value="New to Commercial Finance">New to Commercial Finance</option>
+        <option value="1-2 Years">1-2 Years</option>
+        <option value="3+ Years">3+ Years</option>
+      </select>
+
+      <div class="price-info">
+        <label>Annual Partner Fee (USD)</label>
+        <input type="text" value="$197" disabled>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Continue →</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
 
