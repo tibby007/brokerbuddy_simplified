@@ -666,3 +666,39 @@ body {
     transform: translateY(0);
   }
 }
+/* Signup Page Styles */
+.signup-container {
+  max-width: 600px;
+  margin: 100px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signup-container input,
+.signup-container select {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+}
+
+.signup-container .btn {
+  margin-top: 20px;
+}
+
+.price-info {
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
