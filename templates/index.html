@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrokerBuddy - Find. Connect. Close.</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="{{ url_for('index') }}">
+          <img src="{{ url_for('static', filename='img/brokerbuddy-logo.png') }}" alt="BrokerBuddy Logo">
+        </a>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+          <li><a href="#why"><i class="fas fa-question-circle"></i> Why Us</a></li>
+          <li><a href="{{ url_for('lender_signup') }}"><i class="fas fa-university"></i> Lender Sign Up</a></li>
+          <li><a href="{{ url_for('broker_signup') }}"><i class="fas fa-briefcase"></i> Broker Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <img src="{{ url_for('static', filename='img/broker-buddy-robot.png') }}" alt="Robot" class="hero-robot">
+
+          <h1 class="hero-title">Find. Connect. Close.</h1>
+          <p class="hero-subtitle">
+            BrokerBuddy is the ultimate matchmaker for brokers and lenders.
+            Find the right deals. Connect instantly. Close faster.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="{{ url_for('lender_signup') }}" class="btn btn-primary"><i class="fas fa-university"></i> I'm a Lender</a>
+            <a href="{{ url_for('broker_signup') }}" class="btn btn-secondary"><i class="fas fa-briefcase"></i> I'm a Broker</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-search"></i></div>
+            <h3 class="feature-title">Smart Matching</h3>
+            <p class="feature-text">
+              Our proprietary algorithm matches brokers with lenders based on loan criteria, track record, and preferences.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3 class="feature-title">Real-Time Connect</h3>
+            <p class="feature-text">
+              Instant notifications when a perfect match is found, allowing for immediate connection without the back-and-forth.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <h3 class="feature-title">Performance Tracking</h3>
+            <p class="feature-text">
+              Track deal progress, s
 
