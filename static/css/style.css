@@ -65,9 +65,10 @@ body {
 }
 
 .logo img {
-  height: 50px;
+  height: 90px;
   transition: var(--transition);
 }
+
 
 .nav-menu ul {
   list-style: none;
