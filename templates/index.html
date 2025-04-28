@@ -1,3 +1,11 @@
+Here’s the updated **index.html** in full.  
+Changes made:
+
+* Hero robot path fixed to the file you actually have (`broker-buddy-robot.png`).
+* “Why BrokerBuddy?” image now re-uses the same robot.
+* Nothing else touched, so the logo size tweak remains in CSS.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,5 +90,167 @@
             <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
             <h3 class="feature-title">Performance Tracking</h3>
             <p class="feature-text">
-              Track deal progress, s
+              Track deal progress, success rates, and build a reputation that helps you secure more opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== Why BrokerBuddy ===== -->
+    <section class="why-section" id="why">
+      <div class="container">
+        <div class="why-grid">
+          <div class="why-image">
+            <img src="{{ url_for('static', filename='img/broker-buddy-robot.png') }}" alt="BrokerBuddy robot">
+          </div>
+
+          <div class="why-content">
+            <h2>Why BrokerBuddy?</h2>
+            <p class="why-text">
+              Built by brokers who understand the hustle, and trusted by lenders who want qualified leads without the noise.
+              BrokerBuddy bridges the gap with real-time matching, simple interfaces, and actionable connections that close deals.
+            </p>
+            <ul class="check-list">
+              <li>Save time with AI-powered matching</li>
+              <li>Increase your close rate by 35%</li>
+              <li>Access exclusive deals not found elsewhere</li>
+              <li>Build your professional reputation</li>
+              <li>Simple, transparent pricing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Our Users Say</h2>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              BrokerBuddy helped me connect with lenders who were actually interested in my deals. My closing time has decreased by 40%.
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>James Rodriguez</h4>
+                <p>Commercial Broker, Atlanta</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              As a lender, the quality of leads coming through BrokerBuddy is far superior to anything else I've tried. The match score has been spot on.
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>Sarah Thompson</h4>
+                <p>Senior Loan Officer, Chicago</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              The platform pays for itself. Within the first month, I closed two deals that would have never happened without these connections.
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>Marcus Johnson</h4>
+                <p>Mortgage Broker, Dallas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Transform Your Business?</h2>
+          <p>Join thousands of successful brokers and lenders who are closing more deals with BrokerBuddy.</p>
+
+          <div class="cta-buttons">
+            <a href="{{ url_for('lender_signup') }}" class="btn btn-primary"><i class="fas fa-university"></i> Lender Sign Up</a>
+            <a href="{{ url_for('broker_signup') }}" class="btn btn-secondary"><i class="fas fa-briefcase"></i> Broker Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>BrokerBuddy</h3>
+          <p>The ultimate platform connecting brokers and lenders for faster, more efficient deal closing.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li><a href="{{ url_for('kb') }}">Knowledge Base</a></li>
+            <li><a href="{{ url_for('case_studies') }}">Case Studies</a></li>
+            <li><a href="{{ url_for('webinars') }}">Webinars</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="{{ url_for('privacy') }}">Privacy Policy</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms of Service</a></li>
+            <li><a href="{{ url_for('cookies') }}">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; {{ now.year }} BrokerBuddy. Powered by AI Marvels Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navMenu     = document.getElementById('nav-menu');
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+      }
+
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        header.classList.toggle('header-scrolled', window.scrollY > 50);
+      });
+    });
+  </script>
+</body>
+</html>
