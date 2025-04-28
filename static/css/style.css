@@ -106,9 +106,22 @@ body {
 }
 
 /* Hero Section */
+/* HERO SECTION ---------------------------------------------------- */
 .hero {
-  background: linear-gradient(135deg, rgba(0, 86, 179, 0.9), rgba(0, 210, 255, 0.8)), 
-              
+  /* solid fallback + gradient (no photo) */
+  background: #0056b3;                                            /* ❶ fallback   */
+  background: linear-gradient(135deg, rgba(0,86,179,.90),
+                                        rgba(0,210,255,.80));     /* ❷ gradient  */
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 160px 0 80px;   /* ❸ bumped top padding to clear taller header */
+  position: relative;
+  overflow: hidden;
+}
+
   min-height: 85vh;
   display: flex;
   align-items: center;
