@@ -271,6 +271,37 @@ def process_broker_signup():
     # TODO: create user, start trial, etc.
     flash("Welcome aboard! Check your email for login instructions.", "success")
     return redirect(url_for("index"))
+@app.route("/contact")
+def contact():
+    return "<h1>Contact Page Coming Soon</h1>"
+
+@app.route("/blog")
+def blog():
+    return "<h1>Blog Coming Soon</h1>"
+
+@app.route("/kb")
+def kb():
+    return "<h1>Knowledge Base Coming Soon</h1>"
+
+@app.route("/case_studies")
+def case_studies():
+    return "<h1>Case Studies Coming Soon</h1>"
+
+@app.route("/webinars")
+def webinars():
+    return "<h1>Webinars Coming Soon</h1>"
+
+@app.route("/privacy")
+def privacy():
+    return "<h1>Privacy Policy Coming Soon</h1>"
+
+@app.route("/terms")
+def terms():
+    return "<h1>Terms of Service Coming Soon</h1>"
+
+@app.route("/cookies")
+def cookies():
+    return "<h1>Cookie Policy Coming Soon</h1>"
 
 
 if __name__ == '__main__':
