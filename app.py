@@ -79,10 +79,6 @@ def init_db():
         app.logger.error(f"Error initializing database: {str(e)}")
         raise
 
-@app.route('/')
-def index():
-    return render_template('index.html', now=datetime.now())
-
 @app.route('/client-form')
 def client_form():
     return render_template('client_form.html', now=datetime.now())
