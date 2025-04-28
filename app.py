@@ -253,6 +253,35 @@ if __name__ == '__main__':
         app.run(host='0.0.0.0', port=port)
     except Exception as e:
         app.logger.error(f"Error starting application: {str(e)}")
+# --- Landing & signup routes ----------------------------------------
+
+@app.route("/")
+def index():
+    return render_template("index.html", now=datetime.now())
+
+# Lender sign-up
+@app.route("/lender-signup", methods=["GET"])
+def lender_signup():
+    return render_template("lender_signup.html", now=datetime.now())
+
+@app.route("/lender-signup", methods=["POST"])
+def process_lender_signup():
+    data = request.form.to_dict()
+    # TODO: write to DB / call Stripe checkout / send onboarding email
+    flash("Thanks! We'll review your program and be in touch shortly.", "success")
+    return redirect(url_for("index"))
+
+# Broker sign-up
+@app.route("/broker-signup", methods=["GET"])
+def broker_signup():
+    return render_template("broker_signup.html", now=datetime.now())
+
+@app.route("/broker-signup", methods=["POST"])
+def process_broker_signup():
+    data = request.form.to_dict()
+    # TODO: create user, start trial, etc.
+    flash("Welcome aboard! Check your email for login instructions.", "success")
+    return redirect(url_for("index"))
 
 
 
