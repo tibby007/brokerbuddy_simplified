@@ -651,11 +651,12 @@ body {
   }
 }
 .hero-robot {
-  max-width: 150px;
+  max-width: 200px;   /* larger robot */
   margin: 0 auto 20px;
   display: block;
   animation: fadeInDown 1s ease;
 }
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
