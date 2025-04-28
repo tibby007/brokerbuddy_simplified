@@ -1,1 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="signup">
+  <div class="container signup-container">
+    <h1>Become a BrokerBuddy Lender Partner</h1>
+
+    <form method="post" action="{{ url_for('process_lender_signup') }}">
+      <input type="text" name="company" placeholder="Company Name*" required>
+      <input type="text" name="contact" placeholder="Contact Name*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+
+      <select name="program_type" required>
+        <option value="">Select Program Type*</option>
+        <option value="Equipment Financing">Equipment Financing</option>
+        <option value="Working Capital">Working Capital</option>
+        <option value="Both">Both</option>
+      </select>
+
+      <div class="price-info">
+        <label>Annual Insertion Fee (USD)</label>
+        <input type="text" value="$497" disabled>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Continue →</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
 
