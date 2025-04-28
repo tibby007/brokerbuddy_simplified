@@ -1,1 +1,33 @@
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='img/brokerbuddy-logo.png') }}" alt="BrokerBuddy Logo" style="height: 60px;">
+      </a>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="{{ url_for('lender_signup') }}">Lender Sign Up</a></li>
+        <li><a href="{{ url_for('broker_signup') }}">Broker Sign Up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Find. Connect. Close.</h1>
+      <p class="hero-subtitle">
+        BrokerBuddy is the easiest way for brokers and lenders to connect, collaborate, and close more deals.
+        We match brokers with the best lenders, and lenders with ready-to-close deals.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="{{ url_for('lender_signup') }}" class="btn btn-primary">I'm a Lender</a>
+        <a href="{{ url_for('broker_signup') }}" class="btn btn-secondary">I'm a Broker</a>
+      </div>
+    </div>
+  </section>
+</main>
 
