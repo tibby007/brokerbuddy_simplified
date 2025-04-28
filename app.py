@@ -246,13 +246,6 @@ def server_error(e):
     app.logger.error(f"500 error: {str(e)}")
     return render_template('500.html', now=datetime.now()), 500
 
-if __name__ == '__main__':
-    try:
-        init_db()
-        port = int(os.environ.get('PORT', 5000))
-        app.run(host='0.0.0.0', port=port)
-    except Exception as e:
-        app.logger.error(f"Error starting application: {str(e)}")
 # --- Landing & signup routes ----------------------------------------
 
 @app.route("/")
@@ -283,6 +276,14 @@ def process_broker_signup():
     flash("Welcome aboard! Check your email for login instructions.", "success")
     return redirect(url_for("index"))
 
+
+if __name__ == '__main__':
+    try:
+        init_db()
+        port = int(os.environ.get('PORT', 5000))
+        app.run(host='0.0.0.0', port=port)
+    except Exception as e:
+        app.logger.error(f"Error starting application: {str(e)}")
 
 
 
