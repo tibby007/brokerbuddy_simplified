@@ -40,10 +40,10 @@ body {
 .header {
   background: white;
   color: var(--dark);
-  box-shadow: none;
   border-bottom: 1px solid #eee;
-  padding: 20px 0;
+  padding: 10px 0;  /* was 20px */
 }
+
 
 .main-content {
   padding-top: 0px;
@@ -58,8 +58,10 @@ body {
 }
 
 .logo img {
-  height: 100px;
+  height: 80px;
+  margin-bottom: 0;
 }
+
 
 
 .header-scrolled {
