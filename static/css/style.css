@@ -777,4 +777,17 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
 
