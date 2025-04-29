@@ -746,4 +746,35 @@ body {
   font-size: 14px;
   color: var(--text-light);
 }
+.why-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.why-card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  text-align: left;
+  transition: var(--transition);
+}
+
+.why-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+}
+
+.why-card p {
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
 
