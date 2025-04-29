@@ -799,4 +799,13 @@ body {
 .btn-success:hover {
   background-color: #218838;
 }
+.hero-subtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  color: white;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
 
