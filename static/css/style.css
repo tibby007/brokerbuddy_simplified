@@ -65,7 +65,7 @@ body {
 }
 
 .logo img {
-  height: 160px;
+  height: 120px;
   transition: var(--transition);
 }
 
@@ -117,7 +117,7 @@ body {
   align-items: center;
   color: white;
   text-align: center;
-  padding: 160px 0 80px;  /* makes room for tall header logo */
+  padding: 100px 0 80px;  /* makes room for tall header logo */
   position: relative;
   overflow: hidden;
   background-blend-mode: overlay;
