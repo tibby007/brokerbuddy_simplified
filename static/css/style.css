@@ -38,15 +38,21 @@ body {
 
 /* Header Styles */
 .header {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  padding: 15px 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
+  background: white;
+  color: var(--dark);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
+
+.header a,
+.header .nav-link {
+  color: #222 !important;
+  font-weight: 600;
+}
+
+.logo img {
+  height: 100px;
+}
+
 
 .header-scrolled {
   padding: 10px 0;
