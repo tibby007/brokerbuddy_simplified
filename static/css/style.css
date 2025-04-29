@@ -199,15 +199,14 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
-  margin-bottom: 40px;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  line-height: 1.6;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeInUp 1s ease 0.2s;
-  animation-fill-mode: both;
+  margin: 0 auto 20px;
+  color: white;
+  font-weight: 400;
 }
+
 
 .cta-buttons {
   display: flex;
@@ -799,13 +798,5 @@ body {
 .btn-success:hover {
   background-color: #218838;
 }
-.hero-subtitle {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto 20px;
-  color: white;
-  font-weight: 400;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
+
 
