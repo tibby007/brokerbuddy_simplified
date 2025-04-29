@@ -37,12 +37,24 @@ body {
 }
 
 /* Header Styles */
-.header {
-  background: white;
-  color: var(--dark);
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;  /* was 20px */
+.hero {
+  background: linear-gradient(
+      rgba(0, 86, 179, 0.85),
+      rgba(0, 210, 255, 0.75)
+    ),
+    url('../img/hero-office-bg.jpg') center/cover no-repeat;
+  min-height: 100vh;  /* was 85vh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 40px 0 80px;  /* reduced top padding */
+  position: relative;
+  overflow: hidden;
+  background-blend-mode: overlay;
 }
+
 
 
 .main-content {
