@@ -108,11 +108,13 @@ body {
 /* Hero Section */
 .hero {
   /* vivid blue-to-cyan gradient, no missing JPG */
-  background: linear-gradient(
-      135deg,
-      rgba(0, 86, 179, 0.90),
-      rgba(0, 210, 255, 0.80)
-  );
+ background: linear-gradient(
+    rgba(0, 86, 179, 0.85),
+    rgba(0, 210, 255, 0.75)
+  ),
+  url('../img/hero-office-bg.jpg') center/cover no-repeat;
+background-blend-mode: overlay;
+
   min-height: 85vh;
   display: flex;
   align-items: center;
