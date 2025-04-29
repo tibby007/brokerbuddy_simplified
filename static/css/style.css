@@ -107,24 +107,22 @@ body {
 
 /* Hero Section */
 .hero {
-  /* vivid blue-to-cyan gradient, no missing JPG */
- background: linear-gradient(
-    rgba(0, 86, 179, 0.85),
-    rgba(0, 210, 255, 0.75)
-  ),
-  url('../img/hero-office-bg.jpg') center/cover no-repeat;
-background-blend-mode: overlay;
-
+  background: linear-gradient(
+      rgba(0, 86, 179, 0.85),
+      rgba(0, 210, 255, 0.75)
+    ),
+    url('../img/hero-office-bg.jpg') center/cover no-repeat;
   min-height: 85vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  color: white;
   text-align: center;
-  color: #fff;
-  padding: 160px 0 80px;          /* room for taller header logo */
+  padding: 160px 0 80px;  /* makes room for tall header logo */
   position: relative;
   overflow: hidden;
+  background-blend-mode: overlay;
 }
+
 
 /* dotted overlay for subtle texture */
 .hero::before {
