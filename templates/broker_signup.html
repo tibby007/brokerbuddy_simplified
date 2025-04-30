@@ -1,1 +1,57 @@
+{% extends "base.html" %}
+{% block extra_css %}
+  <style>
+    /* .logo{display:none;} */ /* Removed logo hiding */
+    footer{text-align:center;}
+  </style>
+{% endblock %}
+{% block content %}
+<div style="padding: 20px 0 0 20px;"><a href="/" class="back-button" style="display: inline-block; padding: 10px 20px; background-color: #f0f0f0; color: #333; text-decoration: none; border: 1px solid #ccc; border-radius: 5px;">Back to home</a></div>
+
+<!-- Benefits –– BEFORE the form -->
+<section class="lender-benefits" style="padding:60px 20px;background:#f9f9f9;text-align:center;">
+  <div class="container">
+    <h2 style="margin-bottom:40px;">What’s Included for Lenders</h2>
+    <div class="why-grid-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto;">
+      <div class="why-card"><h4>🔍 Targeted Deal Flow</h4><p>Only pre-qualified opportunities</p></div>
+      <div class="why-card"><h4>📂 Complete Packages</h4><p>Full borrower docs – no chasing</p></div>
+      <div class="why-card"><h4>⚙️ Smart Matching Engine</h4><p>Deals aligned to your credit box</p></div>
+      <div class="why-card"><h4>🤝 Trusted Broker Network</h4><p>Work with vetted brokers nationwide</p></div>
+    </div>
+  </div>
+</section>
+<!-- Step 1 –– Lender info -->
+<section class="signup" style="text-align:center;">
+  <div class="container signup-container">
+    <h1 style="margin-bottom:30px;">Step 1: Lender Information</h1>
+    <form method="post" action="{{ url_for('process_lender_signup') }}" style="max-width:480px;margin:0 auto;">
+      <input  type="text"  name="company" placeholder="Company Name*" required>
+      <input  type="text"  name="contact" placeholder="Contact Name*" required>
+      <input  type="email" name="email"   placeholder="Email*"       required>
+      <select name="program_type" required>
+        <option value="">Select Program Type*</option>
+        <option value="Equipment">Equipment Finance</option>
+        <option value="Working Capital">Working Capital</option>
+        <option value="Both">Both</option>
+      </select>
+      <input type="text" value="$497 Annual Insertion Fee" disabled>
+      <button type="submit" class="btn btn-primary">Continue →</button>
+    </form>
+  </div>
+</section>
+
+<!-- Step 2 –– Stripe link -->
+<section style="text-align:center;padding:40px 20px;">
+  <h2>Step 2: Pay & Join</h2>
+  <a href="https://buy.stripe.com/6oE01v4yv8uo5kk5kn"
+     class="btn btn-warning" style="margin-top:10px;">
+    Pay $497 — use code <strong>founder</strong> to save $100
+  </a>
+</section>
+
+<!-- Footer -->
+<footer style="padding:20px 10px; width: 100%;">
+  © 2025 AI Marvels Inc · <a href="mailto:support@aimarvelsinc.com">Contact Support</a>
+</footer>
+{% endblock %}
 
