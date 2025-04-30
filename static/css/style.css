@@ -815,5 +815,22 @@ body {
 .btn-success:hover {
   background-color: #218838;
 }
+.payment-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.payment-cta a.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.payment-cta .btn-success {
+  background-color: #28a745;
+}
 
 
