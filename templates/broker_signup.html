@@ -1,31 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
-<section class="signup">
-  <div class="container signup-container">
-    <h1>Become a BrokerBuddy Broker Partner</h1>
-
-    <form method="post" action="{{ url_for('process_broker_signup') }}">
-      <input type="text" name="first_name" placeholder="First Name*" required>
-      <input type="text" name="last_name" placeholder="Last Name*" required>
-      <input type="email" name="email" placeholder="Email*" required>
-
-      <select name="experience" required>
-        <option value="">Select Experience Level</option>
-        <option value="New to Commercial Finance">New to Commercial Finance</option>
-        <option value="1-2 Years">1-2 Years</option>
-        <option value="3+ Years">3+ Years</option>
-      </select>
-
-      <div class="price-info">
-        <label>Annual Partner Fee (USD)</label>
-        <input type="text" value="$197" disabled>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Continue →</button>
-    </form>
-  </div>
-</section>
+<a href="/" class="btn btn-link" style="margin: 20px; display: inline-block; color: #0072ff;">← Back to Home</a>
 
 <section class="broker-benefits" style="padding: 60px 20px; background-color: #f9f9f9;">
   <div class="container">
@@ -50,23 +25,47 @@
     </div>
   </div>
 </section>
+
+<section class="signup">
+  <div class="container signup-container">
+    <h2>Step 1: Fill Out Your Info</h2>
+
+    <form method="post" action="{{ url_for('process_broker_signup') }}">
+      <input type="text" name="first_name" placeholder="First Name*" required>
+      <input type="text" name="last_name" placeholder="Last Name*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+
+      <select name="experience" required>
+        <option value="">Select Experience Level</option>
+        <option value="New to Commercial Finance">New to Commercial Finance</option>
+        <option value="1-2 Years">1-2 Years</option>
+        <option value="3+ Years">3+ Years</option>
+      </select>
+
+      <button type="submit" class="btn btn-secondary">Submit Info</button>
+    </form>
+  </div>
+</section>
+
 <div class="payment-cta">
-  <h3>Step 2: Complete Your Payment</h3>
-  <p>Select your plan below to activate your BrokerBuddy account.</p>
-
-  <!-- Monthly Plan -->
+  <h2>Step 2: Choose Your Plan</h2>
   <a href="https://buy.stripe.com/dR6dSl5Cz5iccMM8wx" target="_blank" class="btn btn-success">
-    $29.99/month (3-day free trial)
-  </a>
-
-  <!-- Annual Plan -->
-  <a href="https://buy.stripe.com/8wM15z7KHaCw6oo8wy" target="_blank" class="btn btn-success" style="margin-top: 10px;">
-    $299/year (3-day free trial)
+    $29.99/month (3-day trial)
+  </a><br><br>
+  <a href="https://buy.stripe.com/8wM15z7KHaCw6oo8wy" target="_blank" class="btn btn-success">
+    $299/year (3-day trial)
   </a>
 </div>
 
+<footer style="text-align: center; padding: 20px 0; font-size: 0.9rem; background-color: #f9f9f9; color: #666;">
+  © 2025 AI Marvels Inc · <a href="mailto:support@aimarvelsinc.com" style="color: #0072ff;">Contact Support</a>
+</footer>
 
 {% endblock %}
+
+
+
+
 
 
 
