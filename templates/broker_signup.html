@@ -1,1 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Broker Benefits Section (before form) -->
+<section class="broker-benefits" style="padding: 60px 20px; background-color:#f9f9f9; text-align:center;">
+  <div class="container">
+    <h2 style="margin-bottom:40px;">What’s Included for Brokers</h2>
+    <div class="why-grid-cards">
+      <div class="why-card"><h4>🤖 24/7 AI Underwriter</h4><p>Submit and pre‑qualify deals anytime</p></div>
+      <div class="why-card"><h4>📊 Deal Calculator</h4><p>Instantly estimate payment terms</p></div>
+      <div class="why-card"><h4>📋 Curated Lender Access</h4><p>Work with top funders who fit your deals</p></div>
+      <div class="why-card"><h4>📄 Templates & Scripts</h4><p>Use proven email and pitch assets</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Sign‑Up Form -->
+<section class="signup" style="text-align:center;">
+  <div class="container signup-container">
+    <h1 style="margin-bottom:30px;">Step 1: Broker Info</h1>
+    <form method="post" action="{{ url_for('process_broker_signup') }}" style="max-width:480px;margin:0 auto;">
+      <input type="text" name="first_name" placeholder="First Name*" required>
+      <input type="text" name="last_name" placeholder="Last Name*" required>
+      <input type="email" name="email" placeholder="Email*" required>
+      <select name="experience" required>
+        <option value="">Select Experience Level</option>
+        <option value="New to Commercial Finance">New to Commercial Finance</option>
+        <option value="1-2 Years">1–2 Years</option>
+        <option value="3+ Years">3+ Years</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Continue →</button>
+    </form>
+  </div>
+</section>
+
+<!-- Payment Options -->
+<section style="text-align:center;padding:40px 20px;">
+  <h2>Step 2: Choose Your Plan</h2>
+  <a href="https://buy.stripe.com/dR6dSl5Cz5iccMM8wx" class="btn btn-success" style="margin:10px;">$29.99 / month (3‑day trial)</a>
+  <a href="https://buy.stripe.com/8wM15z7KHaCw6oo8wy" class="btn btn-success" style="margin:10px;">$299 / year (3‑day trial)</a>
+</section>
+
+<!-- Footer -->
+<footer style="text-align:center;padding:20px 10px;">
+  <p>© 2025 AI Marvels Inc · <a href="mailto:support@aimarvelsinc.com">Contact Support</a></p>
+</footer>
+
+{% endblock %}
 
