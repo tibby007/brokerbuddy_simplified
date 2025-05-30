@@ -33,11 +33,8 @@ app.logger.setLevel(logging.DEBUG)
 # Configuration
 app.config.update(
     DATABASE_PATH=os.environ.get('DATABASE_PATH', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'brokerbuddy.db')),
-    DEBUG=os.environ.get('DEBUG', 'True').lower() in ('true', '1', 't'),
-    TESTING=False,
-    SESSION_TYPE='filesystem',
-    SESSION_PERMANENT=False,
-    SESSION_USE_SIGNER=True
+    DEBUG=False, # Temporarily set to False
+    TESTING=False
 )
 
 # Ensure session directory exists
@@ -305,13 +302,10 @@ def cookies():
 
 
 if __name__ == '__main__':
-    try:
-        init_db()
-        port = int(os.environ.get('PORT', 5000))
-        app.run(host='0.0.0.0', port=port)
-    except Exception as e:
-        app.logger.error(f"Error starting application: {str(e)}")
-
+    init_db()
+    print("<<<<< RUNNING APP ON PORT 5001 - LATEST CODE - NO RELOADER >>>>>") # Modified print
+    # Temporarily disable the reloader and debug mode for this test
+    app.run(host='0.0.0.0', port=5001, debug=False, use_reloader=False)
 
 
             

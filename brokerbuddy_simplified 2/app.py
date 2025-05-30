@@ -175,9 +175,6 @@ def server_error(e):
 
 # Initialize the application
 if __name__ == '__main__':
-    # Initialize database if needed
     init_db()
-    
-    # Run the application
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    print("<<<<< RUNNING APP ON PORT 5001 - LATEST CODE >>>>>") # Add this line
+    app.run(host='0.0.0.0', port=5001)
